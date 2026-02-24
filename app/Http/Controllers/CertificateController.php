@@ -19,9 +19,40 @@ class CertificateController extends Controller
     {
         $certificate = null;
         if ($request->filled('code')) {
-            $certificate = Certificate::where('certificate_code', $request->code)->first();
+            $certificate = Certificate::where('certificate_code', $request->code)
+                ->with('course')
+                ->first();
         }
         
         return view('certificates.verify', compact('certificate'));
+    }
+
+    public function checkCertificate(Request $request)
+    {
+        $request->validate([
+            'code' => 'required|string'
+        ]);
+
+        $certificate = Certificate::where('certificate_code', $request->code)
+            ->with('course')
+            ->first();
+
+        if ($certificate) {
+            return response()->json([
+                'valid' => true,
+                'data' => [
+                    'student_name' => $certificate->student_name,
+                    'course_title' => $certificate->course->title,
+                    'certificate_code' => $certificate->certificate_code,
+                    'issue_date' => $certificate->issue_date->format('F d, Y'),
+                    'download_url' => route('certificates.download', $certificate),
+                ]
+            ]);
+        }
+
+        return response()->json([
+            'valid' => false,
+            'message' => 'Certificate not found'
+        ], 404);
     }
 }

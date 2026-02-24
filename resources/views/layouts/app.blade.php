@@ -3,11 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="Uniaro - Academics and Education Html Template" />
-    <meta name="description" content="Uniaro- LMS Education Html Template" />
-    <meta name="author" content="https://www.themetechmount.com/" />
+    <meta name="keywords" content="CSA Education, Computer Education, IT Training, Bhawanigarh, Computer Classes" />
+    <meta name="description" content="CSA Education Bhawanigarh - Best Computer Education and IT Training Center" />
+    <meta name="author" content="CSA Education" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@yield('title', 'Uniaro - Academics and Education')</title>
+    <title>@yield('title', 'CSA Education - Computer Education & IT Training Center')</title>
 
     <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}"/>
@@ -15,6 +15,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/fontello.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/flaticon.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.css') }}"/>
+    <!-- Font Awesome CDN Backup -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/themify-icons.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/slick.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/prettyPhoto.css') }}">
@@ -23,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/megamenu.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}"/>
     <link rel='stylesheet' id='rs-plugin-settings-css' href="{{ asset('revolution/css/rs6.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}"/>
     
     @yield('extra_css')
     <script>
@@ -43,10 +46,10 @@
                     <div class="row">
                         <div class="col-lg-6 d-flex flex-row align-items-center">
                             <div class="top_bar_contact_item">
-                                <div class="top_bar_icon"><i class="fa fa-envelope-o"></i></div><a href="mailto:info.uniaro@support.com">info.uniaro@support.com</a>
+                                <div class="top_bar_icon"><i class="fa fa-envelope-o"></i></div><a href="mailto:info@csaeducation.in">info@csaeducation.in</a>
                             </div>
                             <div class="top_bar_contact_item">
-                                <div class="top_bar_icon"><i class="fa fa-map-marker"></i></div>207 South Chestnut Lane Staten Island.
+                                <div class="top_bar_icon"><i class="fa fa-map-marker"></i></div>Bhawanigarh, Punjab
                             </div>
                         </div>
                         <div class="col-lg-6 d-flex flex-row align-items-center">
@@ -61,7 +64,7 @@
                                 </div>
                             </div>
                             <div class="top_bar_contact_item">
-                                <a href="/admin">Login</a>
+                                <a href="{{ route('students.register') }}">Register Now</a>
                             </div>
                         </div>
                     </div>
@@ -75,8 +78,8 @@
                             <div class="layer-content">
                                 <div class="site-navigation d-flex flex-row">
                                     <div class="site-branding">
-                                        <a class="home-link" href="/" title="Uniaro" rel="home">
-                                            <img id="logo-img" class="img-fluid auto_size" alt="image" width="136" height="42" src="{{ asset('images/logo-img.svg') }}">
+                                        <a class="home-link" href="/" title="CSA Education" rel="home">
+                                            <img id="logo-img" class="img-fluid auto_size" alt="CSA Education" width="200" height="60" src="{{ asset('images/csa-logo.svg') }}">
                                         </a>
                                     </div>
                                     <div class="btn-show-menu-mobile menubar menubar--squeeze">
@@ -124,10 +127,10 @@
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 widget-area">
                             <div class="widget widget_text clearfix">
                                 <div class="footer-logo">
-                                    <img id="footer-logo-img" class="img-fluid auto_size" alt="image" width="136" height="42" src="{{ asset('images/footer-logo.svg') }}">
+                                    <img id="footer-logo-img" class="img-fluid auto_size" alt="CSA Education" width="200" height="60" src="{{ asset('images/csa-footer-logo.svg') }}">
                                 </div>
                                 <div class="textwidget widget-text">
-                                    <p>Uniaro University was established for the public benefit. Recognized globally for educational excellence.</p>
+                                    <p>CSA Education Bhawanigarh - Best place for learning latest technology for IT industry. Huge experience in multimedia and web technologies.</p>
                                 </div>
                             </div>
                         </div>
@@ -147,9 +150,9 @@
                             <div class="widget widget_nav_menu clearfix">
                                <h3 class="widget-title">Contact Us</h3>
                                 <ul class="widget_contact_wrapper">
-                                    <li><h3>location:</h3> 207 South Chestnut Lane Staten Island.</li>
-                                    <li><h3>Email Us:</h3> <a href="mailto:info@uniaro.com">info@uniaro.com</a></li>
-                                    <li><h3>Call Us:</h3> +1 (800) 123-4567</li>
+                                    <li><h3>location:</h3> Bhawanigarh, Punjab, India</li>
+                                    <li><h3>Email Us:</h3> <a href="mailto:info@csaeducation.in">info@csaeducation.in</a></li>
+                                    <li><h3>Call Us:</h3> +91-XXXXXXXXXX</li>
                                 </ul>
                             </div>
                         </div>
@@ -161,7 +164,7 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="bottom-lt-side-footer">
-                                <div class="pb-5">Copyright © {{ date('Y') }} Uniaro. All Rights Reserved.</div>
+                                <div class="pb-5">Copyright © {{ date('Y') }} CSA Education Bhawanigarh. All Rights Reserved.</div>
                             </div>
                         </div>
                     </div>

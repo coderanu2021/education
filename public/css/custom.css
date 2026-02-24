@@ -1,0 +1,425 @@
+/* Custom Styles for CSA Education Website */
+
+/* CSA Education Color Theme */
+:root {
+    --csa-primary: #1db6c5;
+    --csa-dark: #001848;
+    --csa-light: #f8f9fa;
+    --csa-white: #ffffff;
+    --csa-accent: #0d9aa8;
+}
+
+/* Logo Styling */
+.site-branding img {
+    max-height: 60px;
+    width: auto;
+}
+
+.footer-logo img {
+    max-height: 60px;
+    width: auto;
+}
+
+/* Primary Color Updates */
+.ttm-bgcolor-skincolor,
+.ttm-btn-color-skincolor {
+    background-color: var(--csa-primary) !important;
+}
+
+.ttm-btn-color-skincolor:hover {
+    background-color: var(--csa-accent) !important;
+}
+
+.text-primary,
+.ttm-textcolor-skincolor {
+    color: var(--csa-primary) !important;
+}
+
+/* Navigation Menu */
+.main-menu ul li a {
+    color: var(--csa-dark);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-menu ul li a:hover,
+.main-menu ul li.active a {
+    color: var(--csa-primary) !important;
+}
+
+/* Top Bar */
+.top_bar {
+    background-color: var(--csa-dark) !important;
+}
+
+.top_bar a {
+    color: var(--csa-white);
+    transition: color 0.3s ease;
+}
+
+.top_bar a:hover {
+    color: var(--csa-primary);
+}
+
+.top_bar_contact_item a {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 15px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.top_bar_contact_item a:hover {
+    background-color: rgba(29, 182, 197, 0.1);
+}
+
+.top_bar_contact_item a i {
+    margin-right: 5px;
+}
+
+/* Register Button in Top Bar */
+.top_bar_contact_item:last-child a {
+    background-color: var(--csa-primary);
+    color: var(--csa-white) !important;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.top_bar_contact_item:last-child a:hover {
+    background-color: var(--csa-accent);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(29, 182, 197, 0.3);
+}
+
+/* Testimonials Section */
+.testimonial-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.testimonial-box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.testimonial-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.testimonial-content {
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.testimonial-author h5 {
+    color: #001848;
+    font-weight: 600;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 60px 0;
+}
+
+/* Process Section */
+.process-section {
+    padding: 80px 0;
+}
+
+/* Featured Icon Box Enhancements */
+.featured-icon-box.h-100 {
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-icon-box.h-100 .featured-content {
+    flex-grow: 1;
+}
+
+/* Course Cards */
+.featured-imagebox-course {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-imagebox-course:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2) !important;
+}
+
+.featured-imagebox-course .featured-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.featured-imagebox-course .ttm-course-box-meta {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+/* Registration Form Enhancements */
+.registration-form .form-control {
+    height: 45px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+}
+
+.registration-form textarea.form-control {
+    height: auto;
+}
+
+.registration-form .form-label {
+    font-weight: 600;
+    color: #001848;
+    margin-bottom: 8px;
+}
+
+.registration-form .is-invalid {
+    border-color: #dc3545;
+}
+
+.registration-form .invalid-feedback {
+    display: block;
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* Certificate Verification */
+.verify-section {
+    padding: 80px 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .testimonial-section,
+    .process-section {
+        padding: 50px 0;
+    }
+    
+    .cta-section {
+        padding: 40px 0;
+    }
+    
+    .cta-section .text-lg-right {
+        text-align: center !important;
+    }
+}
+
+/* Animation Classes */
+.animate__animated {
+    animation-duration: 0.5s;
+}
+
+.animate__fadeIn {
+    animation-name: fadeIn;
+}
+
+.animate__shakeX {
+    animation-name: shakeX;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes shakeX {
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(-10px, 0, 0);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(10px, 0, 0);
+    }
+}
+
+/* Button Enhancements */
+.ttm-btn {
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.ttm-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(29, 182, 197, 0.3);
+}
+
+.ttm-btn-color-skincolor {
+    background-color: var(--csa-primary) !important;
+    color: var(--csa-white) !important;
+}
+
+.ttm-btn-color-skincolor:hover {
+    background-color: var(--csa-accent) !important;
+}
+
+/* Links */
+a {
+    color: var(--csa-primary);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--csa-accent);
+    text-decoration: none;
+}
+
+/* Featured Course Cards */
+.featured-imagebox-course .ttm-lp-price {
+    color: var(--csa-primary) !important;
+    font-weight: 700;
+}
+
+.featured-imagebox-course:hover {
+    border-color: var(--csa-primary);
+}
+
+/* Section Titles */
+.section-title .title-header h3 {
+    color: var(--csa-primary);
+    font-weight: 600;
+}
+
+.section-title .title-header h2 {
+    color: var(--csa-dark);
+}
+
+/* Icons */
+.ttm-icon_element-fill,
+.ttm-icon_element-color-skincolor {
+    background-color: var(--csa-primary) !important;
+    color: var(--csa-white) !important;
+}
+
+.ttm-list-icon-color-skincolor li i {
+    color: var(--csa-primary) !important;
+}
+
+/* Form Elements */
+.form-control:focus {
+    border-color: var(--csa-primary);
+    box-shadow: 0 0 0 0.2rem rgba(29, 182, 197, 0.25);
+}
+
+/* Card Shadows */
+.shadow-sm {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08) !important;
+}
+
+.card {
+    border: none;
+}
+
+/* Alert Enhancements */
+.alert {
+    border-radius: 8px;
+}
+
+.alert i {
+    font-size: 2rem;
+}
+
+/* Spacing Utilities */
+.spacing-4 {
+    padding: 60px 40px;
+}
+
+.spacing-5 {
+    padding: 40px 30px;
+}
+
+.spacing-6 {
+    padding: 30px 20px;
+}
+
+/* Background Colors */
+.ttm-bgcolor-skincolor {
+    background-color: #1db6c5 !important;
+}
+
+.ttm-bgcolor-darkgrey {
+    background-color: #001848 !important;
+}
+
+.ttm-bgcolor-grey {
+    background-color: #f8f9fa !important;
+}
+
+.ttm-bgcolor-white {
+    background-color: #ffffff !important;
+}
+
+/* Text Colors */
+.text-primary {
+    color: #1db6c5 !important;
+}
+
+/* Icon Styles */
+.ttm-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ttm-icon_element-size-md {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+}
+
+.ttm-icon_element-size-lg {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+}
+
+.ttm-icon_element-fill {
+    background-color: #1db6c5;
+    color: #ffffff;
+}
+
+.ttm-icon_element-style-rounded {
+    border-radius: 50%;
+}
+
+/* List Styles */
+.ttm-list {
+    list-style: none;
+    padding: 0;
+}
+
+.ttm-list li {
+    padding: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+.ttm-list li i {
+    margin-right: 10px;
+    color: #1db6c5;
+}
