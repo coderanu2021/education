@@ -24,7 +24,18 @@ class AppServiceProvider extends ServiceProvider
         
         // Share settings with all views
         view()->composer('*', function ($view) {
-            $view->with('settings', \App\Models\Setting::get());
+            try {
+                // Check if settings table exists
+                if (Schema::hasTable('settings')) {
+                    $view->with('settings', \App\Models\Setting::get());
+                } else {
+                    // Return empty settings object if table doesn't exist
+                    $view->with('settings', new \App\Models\Setting());
+                }
+            } catch (\Exception $e) {
+                // Return empty settings object on any error
+                $view->with('settings', new \App\Models\Setting());
+            }
         });
     }
 }
