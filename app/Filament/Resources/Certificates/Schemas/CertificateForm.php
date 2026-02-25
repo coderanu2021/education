@@ -12,7 +12,7 @@ class CertificateForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
-            ->components([
+            ->schema([
                 TextInput::make('student_name')
                     ->required(),
                 \Filament\Forms\Components\Select::make('course_id')

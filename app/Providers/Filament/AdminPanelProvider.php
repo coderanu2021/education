@@ -34,16 +34,28 @@ class AdminPanelProvider extends PanelProvider
             ->darkModeBrandLogo(asset('images/csa-footer-logo.svg'))
             ->favicon(asset('images/favicon.png'))
             ->colors([
-                'primary' => Color::Orange,
+                'primary' => [
+                    50 => '#e0f7fa',
+                    100 => '#b2ebf2',
+                    200 => '#80deea',
+                    300 => '#4dd0e1',
+                    400 => '#26c6da',
+                    500 => '#1db6c5', // CSA Primary Color
+                    600 => '#00acc1',
+                    700 => '#0097a7',
+                    800 => '#00838f',
+                    900 => '#006064',
+                    950 => '#004d56',
+                ],
                 'danger' => Color::Red,
-                'gray' => Color::Zinc,
-                'info' => Color::Blue,
-                'success' => Color::Green,
+                'gray' => Color::Slate,
+                'info' => Color::Sky,
+                'success' => Color::Emerald,
                 'warning' => Color::Amber,
             ])
             ->font('Inter')
             ->darkMode()
-            ->defaultThemeMode(ThemeMode::Dark)
+            ->defaultThemeMode(ThemeMode::Light)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -73,11 +85,12 @@ class AdminPanelProvider extends PanelProvider
             ->collapsedSidebarWidth('5rem')
             ->navigationGroups([
                 'Content Management',
-                'User Management',
+                'User Management', 
                 'Settings',
             ])
             ->topNavigation(false)
             ->maxContentWidth('full')
             ->spa();
+            // ->viteTheme('resources/css/filament/admin/theme.css'); // Disabled until npm build is run
     }
 }

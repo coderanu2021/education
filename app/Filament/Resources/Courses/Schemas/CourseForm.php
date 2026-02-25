@@ -12,7 +12,7 @@ class CourseForm
     public static function configure(Schema $schema): Schema
     {
         return $schema
-            ->components([
+            ->schema([
                 TextInput::make('title')
                     ->required()
                     ->live(onBlur: true)

@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\Certificates\Tables;
 
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use Filament\Actions\EditAction;
+use Filament\Tables\Actions\BulkActionGroup;
+use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use App\Models\Certificate;
 use Filament\Tables\Table;
@@ -38,7 +39,7 @@ class CertificatesTable
             ])
             ->recordActions([
                 EditAction::make(),
-                \Filament\Tables\Actions\Action::make('download')
+                Action::make('download')
                     ->label('Download PDF')
                     ->icon('heroicon-o-arrow-down-tray')
                     ->url(fn (Certificate $record): string => route('certificates.download', $record))

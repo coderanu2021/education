@@ -16,7 +16,7 @@ php artisan down || true
 
 # Pull latest code from Git
 echo "📥 Pulling latest code..."
-git pull origin main
+git pull origin master
 
 # Install/Update Composer dependencies
 echo "📦 Installing dependencies..."
