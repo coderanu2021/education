@@ -15,15 +15,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Setup SSH Key
+      run: |
+        mkdir -p ~/.ssh
+        echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/deploy_key
+        chmod 600 ~/.ssh/deploy_key
+        ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
+
     - name: Deploy to EC2
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.EC2_HOST }}
-        username: ${{ secrets.EC2_USERNAME }}
-        key: ${{ secrets.EC2_SSH_KEY }}
-        port: 22
-        script: |
-          cd /var/www/csaeducation
+      run: |
+        ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'ENDSSH'
+          cd ${{ secrets.EC2_PATH }}
           
           # Pull latest code
           git pull origin main
@@ -48,3 +50,4 @@ jobs:
           sudo systemctl reload nginx
           
           echo "Deployment completed successfully!"
+        ENDSSH

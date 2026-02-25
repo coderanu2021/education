@@ -50,8 +50,8 @@ sudo ufw --force enable
 
 # Create web directory
 echo "📁 Creating web directory..."
-sudo mkdir -p /var/www/csaeducation
-sudo chown -R $USER:$USER /var/www/csaeducation
+sudo mkdir -p /var/www/education
+sudo chown -R $USER:$USER /var/www/education
 
 echo ""
 echo "✅ Basic setup completed!"
@@ -59,7 +59,7 @@ echo ""
 echo "📝 Next steps:"
 echo "1. Secure MySQL: sudo mysql_secure_installation"
 echo "2. Create database and user"
-echo "3. Clone your repository to /var/www/csaeducation"
+echo "3. Clone your repository to /var/www/education"
 echo "4. Configure .env file"
 echo "5. Run: composer install"
 echo "6. Run: php artisan migrate --seed"
