@@ -49,7 +49,7 @@ class Setting extends Model
     /**
      * Get the full URL for logo
      * Database stores: settings/filename.jpg
-     * This returns: http://domain/uploads/settings/filename.jpg
+     * This returns: /uploads/settings/filename.jpg (relative URL)
      */
     public function getLogoUrlAttribute()
     {
@@ -87,7 +87,7 @@ class Setting extends Model
         }
 
         // Database stores: settings/filename.jpg
-        // We need: uploads/settings/filename.jpg
-        return url('uploads/' . ltrim($image, '/'));
+        // Return: /uploads/settings/filename.jpg
+        return '/uploads/' . ltrim($image, '/');
     }
 }

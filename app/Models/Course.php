@@ -30,7 +30,7 @@ class Course extends Model
     /**
      * Get the full URL for the course image
      * Database stores: courses/filename.jpg
-     * This returns: http://domain/uploads/courses/filename.jpg
+     * This returns: /uploads/courses/filename.jpg (relative URL)
      */
     public function getImageUrlAttribute()
     {
@@ -44,7 +44,7 @@ class Course extends Model
         }
 
         // Database stores: courses/filename.jpg
-        // We need: uploads/courses/filename.jpg
-        return url('uploads/' . ltrim($this->image, '/'));
+        // Return: /uploads/courses/filename.jpg
+        return '/uploads/' . ltrim($this->image, '/');
     }
 }

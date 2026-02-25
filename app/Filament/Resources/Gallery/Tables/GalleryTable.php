@@ -14,10 +14,8 @@ class GalleryTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image')
+                ImageColumn::make('image_url')
                     ->label('Image')
-                    ->disk('uploads')
-                    ->visibility('public')
                     ->size(100),
 
                 TextColumn::make('title')

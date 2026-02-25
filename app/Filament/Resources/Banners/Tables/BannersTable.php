@@ -14,12 +14,9 @@ class BannersTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image')
+                ImageColumn::make('image_url')
                     ->label('Banner')
-                    ->disk('uploads')
-                    ->visibility('public')
-                    ->size(150)
-                    ->defaultImageUrl(url('/images/slides/slider-mainbg-001.jpg')),
+                    ->size(150),
 
                 TextColumn::make('link')
                     ->label('Link')

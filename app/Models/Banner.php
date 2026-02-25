@@ -20,7 +20,7 @@ class Banner extends Model
     /**
      * Get the full URL for the banner image
      * Database stores: banners/filename.jpg
-     * This returns: http://domain/uploads/banners/filename.jpg
+     * This returns: /uploads/banners/filename.jpg (relative URL)
      */
     public function getImageUrlAttribute()
     {
@@ -34,7 +34,7 @@ class Banner extends Model
         }
 
         // Database stores: banners/filename.jpg
-        // We need: uploads/banners/filename.jpg
-        return url('uploads/' . ltrim($this->image, '/'));
+        // Return: /uploads/banners/filename.jpg
+        return '/uploads/' . ltrim($this->image, '/');
     }
 }

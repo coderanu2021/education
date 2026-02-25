@@ -21,7 +21,7 @@ class Gallery extends Model
     /**
      * Get the full URL for the gallery image
      * Database stores: gallery/filename.jpg
-     * This returns: http://domain/uploads/gallery/filename.jpg
+     * This returns: /uploads/gallery/filename.jpg (relative URL)
      */
     public function getImageUrlAttribute()
     {
@@ -35,7 +35,7 @@ class Gallery extends Model
         }
 
         // Database stores: gallery/filename.jpg
-        // We need: uploads/gallery/filename.jpg
-        return url('uploads/' . ltrim($this->image, '/'));
+        // Return: /uploads/gallery/filename.jpg
+        return '/uploads/' . ltrim($this->image, '/');
     }
 }

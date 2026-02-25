@@ -22,6 +22,8 @@ cd $PROJECT_DIR
 echo "📁 Creating upload directories..."
 mkdir -p public/uploads/banners
 mkdir -p public/uploads/gallery
+mkdir -p public/uploads/courses
+mkdir -p public/uploads/settings
 
 # Set ownership to www-data (Nginx/PHP-FPM user)
 echo "👤 Setting ownership to www-data..."
@@ -30,8 +32,8 @@ sudo chown -R www-data:www-data bootstrap/cache
 sudo chown -R www-data:www-data public/uploads
 
 # Set proper permissions
-# 755 for directories (rwxr-xr-x)
-# 644 for files (rw-r--r--)
+# 775 for directories (rwxrwxr-x)
+# 664 for files (rw-rw-r--)
 echo "🔑 Setting directory permissions..."
 sudo find storage -type d -exec chmod 775 {} \;
 sudo find bootstrap/cache -type d -exec chmod 775 {} \;
@@ -49,7 +51,18 @@ echo ""
 echo "📊 Current permissions:"
 ls -la public/uploads/
 echo ""
-ls -la storage/
-echo ""
+echo "Testing write access..."
+if [ -w "public/uploads/banners" ]; then
+    echo "✅ public/uploads/banners is writable"
+else
+    echo "❌ public/uploads/banners is NOT writable"
+fi
 
+if [ -w "public/uploads/gallery" ]; then
+    echo "✅ public/uploads/gallery is writable"
+else
+    echo "❌ public/uploads/gallery is NOT writable"
+fi
+
+echo ""
 echo "🎉 Done! Try uploading files now."
