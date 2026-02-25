@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- Banner Slider -->
+<!-- Debug: Total Banners = {{ $banners->count() }} -->
 <div id="bannerCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" style="margin-top: 0;">
     <ol class="carousel-indicators">
         @foreach($banners as $index => $banner)
@@ -10,6 +11,7 @@
     </ol>
     <div class="carousel-inner">
         @forelse($banners as $index => $banner)
+        <!-- Debug Banner {{ $index + 1 }}: {{ $banner->image_url }} -->
         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
             @if($banner->link)
             <a href="{{ $banner->link }}">
@@ -20,6 +22,7 @@
             @endif
         </div>
         @empty
+        <!-- Debug: No banners found, showing default -->
         <div class="carousel-item active">
             <img src="{{ asset('images/slides/slider-mainbg-001.jpg') }}" class="d-block w-100" alt="Default Banner" style="height: 600px; object-fit: cover;">
         </div>
