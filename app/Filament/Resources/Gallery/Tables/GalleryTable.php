@@ -16,7 +16,7 @@ class GalleryTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Image')
-                    ->getStateUsing(fn ($record) => asset($record->image))
+                    ->disk('uploads')
                     ->size(100),
 
                 TextColumn::make('title')

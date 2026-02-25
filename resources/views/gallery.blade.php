@@ -32,8 +32,8 @@
                 @foreach($galleries as $gallery)
                 <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                     <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
-                        <a href="{{ asset($gallery->image) }}" data-lightbox="gallery" data-title="{{ $gallery->title }}">
-                            <img src="{{ asset($gallery->image) }}" alt="{{ $gallery->title }}" style="width: 100%; height: 300px; object-fit: cover; display: block;">
+                        <a href="{{ $gallery->image_url }}" data-lightbox="gallery" data-title="{{ $gallery->title }}">
+                            <img src="{{ $gallery->image_url }}" alt="{{ $gallery->title }}" style="width: 100%; height: 300px; object-fit: cover; display: block;">
                             <div class="gallery-overlay" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 100%); opacity: 0; transition: opacity 0.3s ease; display: flex; align-items: flex-end; padding: 20px;">
                                 <div style="color: white;">
                                     <h4 style="margin: 0 0 5px 0; font-size: 18px;">{{ $gallery->title }}</h4>
