@@ -1,0 +1,50 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to EC2
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.EC2_HOST }}
+        username: ${{ secrets.EC2_USERNAME }}
+        key: ${{ secrets.EC2_SSH_KEY }}
+        port: 22
+        script: |
+          cd /var/www/csaeducation
+          
+          # Pull latest code
+          git pull origin main
+          
+          # Install/Update dependencies
+          composer install --no-dev --optimize-autoloader
+          
+          # Run migrations
+          php artisan migrate --force
+          
+          # Clear and cache
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
+          
+          # Set permissions
+          sudo chown -R www-data:www-data storage bootstrap/cache
+          sudo chmod -R 775 storage bootstrap/cache
+          
+          # Restart services
+          sudo systemctl restart php8.3-fpm
+          sudo systemctl reload nginx
+          
+          echo "Deployment completed successfully!"

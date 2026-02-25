@@ -37,9 +37,9 @@ Complete education website for CSA Education Bhawanigarh with student registrati
 
 ---
 
-## 📋 Quick Start
+## 🚀 Quick Start
 
-### Installation
+### Local Development
 
 ```bash
 # Clone repository
@@ -72,6 +72,24 @@ php artisan serve
 ```
 
 Visit: `http://localhost:8000`
+
+### AWS EC2 Deployment
+
+**Quick Setup:**
+```bash
+# See DEPLOYMENT_QUICK_START.md for step-by-step guide
+```
+
+**Auto Deployment:**
+- Push to `main` branch
+- GitHub Actions automatically deploys to EC2
+- See `AWS_DEPLOYMENT_GUIDE.md` for complete setup
+
+**Files:**
+- `.github/workflows/deploy.yml` - GitHub Actions workflow
+- `deploy.sh` - Deployment script
+- `setup-ec2.sh` - EC2 initial setup
+- `nginx-config.conf` - Nginx configuration template
 
 ---
 
@@ -116,8 +134,11 @@ Visit: `http://localhost:8000`
 
 ## 📖 Documentation
 
+- **README:** This file
 - **Complete Guide:** `CSA_EDUCATION_GUIDE.md`
 - **Registration System:** `STUDENT_REGISTRATION_GUIDE.md`
+- **AWS Deployment:** `AWS_DEPLOYMENT_GUIDE.md`
+- **Quick Deploy:** `DEPLOYMENT_QUICK_START.md`
 
 ---
 
