@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources\Banners\Tables;
+namespace App\Filament\Resources\Gallery\Tables;
 
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
@@ -8,21 +8,26 @@ use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\TernaryFilter;
 use Filament\Tables\Table;
 
-class BannersTable
+class GalleryTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
                 ImageColumn::make('image')
-                    ->label('Banner')
+                    ->label('Image')
                     ->getStateUsing(fn ($record) => asset($record->image))
-                    ->size(150),
+                    ->size(100),
 
-                TextColumn::make('link')
-                    ->label('Link')
+                TextColumn::make('title')
+                    ->label('Title')
+                    ->searchable()
+                    ->sortable(),
+
+                TextColumn::make('description')
+                    ->label('Description')
                     ->limit(50)
-                    ->placeholder('No link'),
+                    ->placeholder('No description'),
 
                 TextColumn::make('order')
                     ->label('Order')
@@ -42,7 +47,7 @@ class BannersTable
             ->filters([
                 TernaryFilter::make('is_active')
                     ->label('Active Status')
-                    ->placeholder('All banners')
+                    ->placeholder('All images')
                     ->trueLabel('Active only')
                     ->falseLabel('Inactive only'),
             ]);

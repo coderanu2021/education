@@ -186,6 +186,7 @@
                                     <li><a href="/">Home</a></li>
                                     <li><a href="{{ route('about') }}">About Us</a></li>
                                     <li><a href="/courses">Our Courses</a></li>
+                                    <li><a href="{{ route('gallery') }}">Gallery</a></li>
                                     <li><a href="{{ route('certificates.verify') }}">Verify Certificate</a></li>
                                     <li><a href="{{ route('contact.show') }}">Contact Us</a></li>
                                 </ul>
@@ -240,6 +241,36 @@
     <script src='{{ asset('revolution/js/revolution.tools.min.js') }}'></script>
     <script src='{{ asset('revolution/js/rs6.min.js') }}'></script>
     <script src="{{ asset('revolution/js/slider.js') }}"></script>
+    
+    <!-- Banner Carousel Script -->
+    <script>
+        jQuery(document).ready(function($) {
+            // Initialize carousel
+            $('#bannerCarousel').carousel({
+                interval: 3000,
+                pause: 'hover',
+                wrap: true
+            });
+            
+            // Manual controls
+            $('.carousel-control-prev').click(function(e) {
+                e.preventDefault();
+                $('#bannerCarousel').carousel('prev');
+            });
+            
+            $('.carousel-control-next').click(function(e) {
+                e.preventDefault();
+                $('#bannerCarousel').carousel('next');
+            });
+            
+            // Indicator controls
+            $('.carousel-indicators li').click(function(e) {
+                e.preventDefault();
+                var slideTo = $(this).data('slide-to');
+                $('#bannerCarousel').carousel(slideTo);
+            });
+        });
+    </script>
     
     @yield('extra_js')
 </body>

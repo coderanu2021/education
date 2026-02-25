@@ -1,28 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- START decfoxSlider 1 REVOLUTION SLIDER 6.5.9 --><p class="rs-p-wp-fix"></p>
-<rs-module-wrap id="rev_slider_1_1_wrapper" data-source="gallery">
-    <rs-module id="rev_slider_1_1" style="" data-version="6.5.9">
-        <rs-slides>
-            @forelse($banners as $index => $banner)
-            <rs-slide data-key="rs-{{ $index + 1 }}" data-title="Slide" data-thumb="{{ asset('storage/' . $banner->image) }}" data-anim="ei:d;eo:d;s:d;r:0;t:fade;sl:d;">
-                @if($banner->link)
-                <a href="{{ $banner->link }}" target="_blank">
-                    <img src="{{ asset('storage/' . $banner->image) }}" title="banner-{{ $index + 1 }}.jpg" width="1920" height="780" class="rev-slidebg tp-rs-img" data-no-retina>
-                </a>
-                @else
-                <img src="{{ asset('storage/' . $banner->image) }}" title="banner-{{ $index + 1 }}.jpg" width="1920" height="780" class="rev-slidebg tp-rs-img" data-no-retina>
-                @endif
-            </rs-slide>
-            @empty
-            <rs-slide data-key="rs-1" data-title="Slide" data-thumb="{{ asset('images/slides/slider-mainbg-001.jpg') }}" data-anim="ei:d;eo:d;s:d;r:0;t:fade;sl:d;">
-                <img src="{{ asset('images/slides/slider-mainbg-001.jpg') }}" title="default-banner.jpg" width="1920" height="780" class="rev-slidebg tp-rs-img" data-no-retina>
-            </rs-slide>
-            @endforelse
-        </rs-slides>
-    </rs-module>
-</rs-module-wrap>
+<!-- Banner Slider -->
+<div id="bannerCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" style="margin-top: 0;">
+    <ol class="carousel-indicators">
+        @foreach($banners as $index => $banner)
+        <li data-target="#bannerCarousel" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
+        @endforeach
+    </ol>
+    <div class="carousel-inner">
+        @forelse($banners as $index => $banner)
+        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+            @if($banner->link)
+            <a href="{{ $banner->link }}">
+                <img src="{{ asset($banner->image) }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="height: 600px; object-fit: cover;">
+            </a>
+            @else
+            <img src="{{ asset($banner->image) }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="height: 600px; object-fit: cover;">
+            @endif
+        </div>
+        @empty
+        <div class="carousel-item active">
+            <img src="{{ asset('images/slides/slider-mainbg-001.jpg') }}" class="d-block w-100" alt="Default Banner" style="height: 600px; object-fit: cover;">
+        </div>
+        @endforelse
+    </div>
+    <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#bannerCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
 <div class="site-main">
     <!-- About Us Section -->
     <section class="ttm-row padding_zero-section clearfix">

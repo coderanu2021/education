@@ -423,3 +423,43 @@ a:hover {
     margin-right: 10px;
     color: #1db6c5;
 }
+
+
+/* Banner Carousel Styles */
+#bannerCarousel {
+    margin-top: 0 !important;
+}
+
+#bannerCarousel .carousel-item img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+}
+
+#bannerCarousel .carousel-control-prev,
+#bannerCarousel .carousel-control-next {
+    width: 5%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#bannerCarousel .carousel-control-prev:hover,
+#bannerCarousel .carousel-control-next:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+#bannerCarousel .carousel-indicators li {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#bannerCarousel .carousel-indicators li.active {
+    background-color: #1db6c5;
+}
+
+@media (max-width: 768px) {
+    #bannerCarousel .carousel-item img {
+        height: 300px;
+    }
+}
