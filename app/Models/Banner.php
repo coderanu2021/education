@@ -66,4 +66,3 @@ class Banner extends Model
         return ltrim($path, '/');
     }
 }
-}
