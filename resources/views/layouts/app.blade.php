@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="keywords" content="CSA Education, Computer Education, IT Training, Bhawanigarh, Computer Classes" />
-    <meta name="description" content="CSA Education Bhawanigarh - Best Computer Education and IT Training Center" />
-    <meta name="author" content="CSA Education" />
+    <meta name="keywords" content="{{ settings('site_name', 'CSA Education') }}, Computer Education, IT Training, Bhawanigarh, Computer Classes" />
+    <meta name="description" content="{{ settings('site_description', 'CSA Education Bhawanigarh - Best Computer Education and IT Training Center') }}" />
+    <meta name="author" content="{{ settings('site_name', 'CSA Education') }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@yield('title', 'CSA Education - Computer Education & IT Training Center')</title>
+    <title>@yield('title', settings('site_name', 'CSA Education') . ' - Computer Education & IT Training Center')</title>
 
-    <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ settings('favicon') ? asset('storage/' . settings('favicon')) : asset('images/favicon.png') }}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/fontello.css') }}"/>
@@ -28,6 +28,35 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}"/>
     
     @yield('extra_css')
+    
+    @if(settings('primary_color') || settings('secondary_color'))
+    <style>
+        :root {
+            --primary-color: {{ settings('primary_color', '#1db6c5') }};
+            --secondary-color: {{ settings('secondary_color', '#001848') }};
+            --accent-color: {{ settings('accent_color', '#1db6c5') }};
+        }
+        
+        /* Apply dynamic colors */
+        .ttm-bgcolor-skincolor,
+        .ttm-btn-color-skincolor {
+            background-color: var(--primary-color) !important;
+        }
+        
+        .ttm-textcolor-skincolor,
+        a:hover {
+            color: var(--primary-color) !important;
+        }
+        
+        .ttm-bgcolor-darkgrey {
+            background-color: var(--secondary-color) !important;
+        }
+        
+        .ttm-textcolor-darkgrey {
+            color: var(--secondary-color) !important;
+        }
+    </style>
+    @endif
     <script>
         window.onerror = function(msg, url, lineNo, columnNo, error) {
             console.error("Error: " + msg + "\nScript: " + url + "\nLine: " + lineNo);
@@ -45,21 +74,37 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-6 d-flex flex-row align-items-center">
+                            @if(settings('email'))
                             <div class="top_bar_contact_item">
-                                <div class="top_bar_icon"><i class="fa fa-envelope-o"></i></div><a href="mailto:info@csaeducation.in">info@csaeducation.in</a>
+                                <div class="top_bar_icon"><i class="fa fa-envelope-o"></i></div><a href="mailto:{{ settings('email') }}">{{ settings('email') }}</a>
                             </div>
+                            @endif
+                            @if(settings('city') || settings('address'))
                             <div class="top_bar_contact_item">
-                                <div class="top_bar_icon"><i class="fa fa-map-marker"></i></div>Bhawanigarh, Punjab
+                                <div class="top_bar_icon"><i class="fa fa-map-marker"></i></div>{{ settings('city') ?: settings('address') }}
                             </div>
+                            @endif
                         </div>
                         <div class="col-lg-6 d-flex flex-row align-items-center">
                             <div class="top_bar_contact_item ms-auto">
                                 <div class="top_bar_social d-flex align-items-center">
                                     <span class="mr-2">Follow Us :</span>
                                     <ul class="social-icons">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        @if(settings('facebook_url'))
+                                        <li><a href="{{ settings('facebook_url') }}" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                        @endif
+                                        @if(settings('twitter_url'))
+                                        <li><a href="{{ settings('twitter_url') }}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                        @endif
+                                        @if(settings('linkedin_url'))
+                                        <li><a href="{{ settings('linkedin_url') }}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                                        @endif
+                                        @if(settings('instagram_url'))
+                                        <li><a href="{{ settings('instagram_url') }}" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                                        @endif
+                                        @if(settings('youtube_url'))
+                                        <li><a href="{{ settings('youtube_url') }}" target="_blank"><i class="fa fa-youtube"></i></a></li>
+                                        @endif
                                     </ul>
                                 </div>
                             </div>
@@ -78,8 +123,8 @@
                             <div class="layer-content">
                                 <div class="site-navigation d-flex flex-row">
                                     <div class="site-branding">
-                                        <a class="home-link" href="/" title="CSA Education" rel="home">
-                                            <img id="logo-img" class="img-fluid auto_size" alt="CSA Education" width="200" height="60" src="{{ asset('images/csa-logo.svg') }}">
+                                        <a class="home-link" href="/" title="{{ settings('site_name', 'CSA Education') }}" rel="home">
+                                            <img id="logo-img" class="img-fluid auto_size" alt="{{ settings('site_name', 'CSA Education') }}" width="200" height="60" src="{{ settings('logo') ? asset('storage/' . settings('logo')) : asset('images/csa-logo.svg') }}">
                                         </a>
                                     </div>
                                     <div class="btn-show-menu-mobile menubar menubar--squeeze">
@@ -127,10 +172,10 @@
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 widget-area">
                             <div class="widget widget_text clearfix">
                                 <div class="footer-logo">
-                                    <img id="footer-logo-img" class="img-fluid auto_size" alt="CSA Education" width="200" height="60" src="{{ asset('images/csa-footer-logo.svg') }}">
+                                    <img id="footer-logo-img" class="img-fluid auto_size" alt="{{ settings('site_name', 'CSA Education') }}" width="200" height="60" src="{{ settings('footer_logo') ? asset('storage/' . settings('footer_logo')) : asset('images/csa-footer-logo.svg') }}">
                                 </div>
                                 <div class="textwidget widget-text">
-                                    <p>CSA Education Bhawanigarh - Best place for learning latest technology for IT industry. Huge experience in multimedia and web technologies.</p>
+                                    <p>{{ settings('footer_text', 'CSA Education Bhawanigarh - Best place for learning latest technology for IT industry. Huge experience in multimedia and web technologies.') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -150,9 +195,15 @@
                             <div class="widget widget_nav_menu clearfix">
                                <h3 class="widget-title">Contact Us</h3>
                                 <ul class="widget_contact_wrapper">
-                                    <li><h3>location:</h3> Bhawanigarh, Punjab, India</li>
-                                    <li><h3>Email Us:</h3> <a href="mailto:info@csaeducation.in">info@csaeducation.in</a></li>
-                                    <li><h3>Call Us:</h3> +91-XXXXXXXXXX</li>
+                                    @if(settings('address') || settings('city'))
+                                    <li><h3>location:</h3> {{ settings('address') }}{{ settings('city') ? ', ' . settings('city') : '' }}{{ settings('state') ? ', ' . settings('state') : '' }}</li>
+                                    @endif
+                                    @if(settings('email'))
+                                    <li><h3>Email Us:</h3> <a href="mailto:{{ settings('email') }}">{{ settings('email') }}</a></li>
+                                    @endif
+                                    @if(settings('phone'))
+                                    <li><h3>Call Us:</h3> {{ settings('phone') }}</li>
+                                    @endif
                                 </ul>
                             </div>
                         </div>
@@ -164,7 +215,7 @@
                     <div class="row">
                         <div class="col-lg-12 text-center">
                             <div class="bottom-lt-side-footer">
-                                <div class="pb-5">Copyright © {{ date('Y') }} CSA Education Bhawanigarh. All Rights Reserved.</div>
+                                <div class="pb-5">{{ settings('copyright_text', 'Copyright © ' . date('Y') . ' ' . settings('site_name', 'CSA Education') . '. All Rights Reserved.') }}</div>
                             </div>
                         </div>
                     </div>

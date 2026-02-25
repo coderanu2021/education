@@ -11,20 +11,31 @@ Complete education website for CSA Education Bhawanigarh with student registrati
 ## 🚀 Features
 
 ### Public Features
-- 📚 Course Catalog (8 courses)
+- 📚 Course Catalog with Dynamic Management
 - 📝 Student Registration System
-- 🎓 Certificate Verification
+- 🎓 Certificate Verification & Generation
 - 📞 Contact Form
 - 💬 Testimonials
+- 🎨 **Dynamic Banners** - Manage slider images from admin
+- ⚙️ **Dynamic Settings** - Control everything from admin panel
 - 📱 Responsive Design
 
 ### Admin Features
 - 👥 Student Management
-- 🎓 Certificate Management
+- 🎓 Certificate Management & PDF Generation
 - 📚 Course Management
+- 🖼️ **Banner Management** - Upload/manage home page sliders
+- ⚙️ **Website Settings** - Logos, colors, contact info, social media
 - 📊 Dashboard & Analytics
 - 🔍 Search & Filters
 - ⚡ Bulk Actions
+
+### Dynamic Content Management
+- 🎨 **Theme Colors** - Change brand colors instantly
+- 🏢 **Contact Details** - Update email, phone, address
+- 🔗 **Social Media** - Manage all social links
+- 🖼️ **Logos** - Upload header, footer, and favicon
+- 📝 **Footer Content** - Customize footer text and copyright
 
 ---
 
@@ -39,39 +50,67 @@ Complete education website for CSA Education Bhawanigarh with student registrati
 
 ## 🚀 Quick Start
 
-### Local Development
+### Prerequisites
+- PHP 8.2+
+- MySQL/MariaDB
+- Composer
+- Node.js & NPM
+
+### Installation
 
 ```bash
-# Clone repository
+# 1. Clone repository
 git clone <repository-url>
+cd education
 
-# Install dependencies
+# 2. Install dependencies
 composer install
 npm install
 
-# Setup environment
-cp .env.example .env
+# 3. Setup environment
+copy .env.example .env
 php artisan key:generate
 
-# Configure database in .env
+# 4. Configure database in .env
 DB_DATABASE=education
 DB_USERNAME=root
 DB_PASSWORD=
 
-# Run migrations
+# 5. Run setup script (Windows)
+setup-admin.bat
+
+# Or manually:
 php artisan migrate
+php artisan db:seed
+php artisan storage:link
 
-# Seed courses
-php artisan db:seed --class=CourseSeeder
-
-# Create admin user
-php artisan make:filament-user
-
-# Start server
+# 6. Start development server
 php artisan serve
 ```
 
-Visit: `http://localhost:8000`
+### 🔐 Admin Login
+
+**Default Credentials:**
+```
+URL: http://localhost:8000/admin
+Email: admin@admin.com
+Password: password
+```
+
+**⚠️ IMPORTANT: Change password after first login!**
+
+**Create Custom Admin:**
+```bash
+php artisan admin:create
+```
+
+### 📚 Documentation
+- **Quick Start:** `QUICK_START.md` - Get started in 5 minutes
+- **Admin Setup:** `ADMIN_SETUP.md` - Admin user management
+- **Settings Guide:** `SETTINGS_GUIDE.md` - Website settings
+- **Dynamic Features:** `DYNAMIC_FEATURES.md` - Content management
+- **Complete Guide:** `CSA_EDUCATION_GUIDE.md` - Full documentation
+- **AWS Deployment:** `AWS_DEPLOYMENT_GUIDE.md` - Production deployment
 
 ### AWS EC2 Deployment
 
@@ -144,18 +183,62 @@ Visit: `http://localhost:8000`
 
 ## 🔧 Commands
 
+### Admin Management
 ```bash
-# Clear cache
+# Create admin user (interactive)
+php artisan admin:create
+
+# Create admin with options
+php artisan admin:create --name="Admin" --email="admin@example.com" --password="SecurePass123"
+```
+
+### Database
+```bash
+# Run migrations
+php artisan migrate
+
+# Seed database (includes admin user)
+php artisan db:seed
+
+# Seed specific seeder
+php artisan db:seed --class=CourseSeeder
+php artisan db:seed --class=SettingSeeder
+```
+
+### Cache Management
+```bash
+# Clear all cache
 php artisan optimize:clear
+
+# Individual cache clear
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+php artisan route:clear
+```
+
+### Development
+```bash
+# Start server
+php artisan serve
+
+# Watch assets
+npm run dev
+
+# Build for production
+npm run build
+```
+
+### Utilities
+```bash
+# Create storage link
+php artisan storage:link
 
 # View routes
 php artisan route:list
 
-# Create admin
-php artisan make:filament-user
-
-# Seed courses
-php artisan db:seed --class=CourseSeeder
+# Open tinker console
+php artisan tinker
 ```
 
 ---

@@ -1,0 +1,189 @@
+<?php
+
+namespace App\Filament\Resources\Settings\Schemas;
+
+use Filament\Schemas\Components\ColorPicker;
+use Filament\Schemas\Components\FileUpload;
+use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Textarea;
+use Filament\Schemas\Components\TextInput;
+use Filament\Schemas\Schema;
+
+class SettingForm
+{
+    public static function configure(Schema $schema): Schema
+    {
+        return $schema
+            ->schema([
+                Tabs::make('Settings')
+                    ->tabs([
+                        Tabs\Tab::make('General')
+                            ->icon('heroicon-o-information-circle')
+                            ->schema([
+                                Section::make('Site Information')
+                                    ->schema([
+                                        TextInput::make('site_name')
+                                            ->label('Site Name')
+                                            ->required()
+                                            ->default('CSA Education')
+                                            ->maxLength(255),
+
+                                        Textarea::make('site_description')
+                                            ->label('Site Description')
+                                            ->rows(3)
+                                            ->maxLength(500),
+                                    ])
+                                    ->columns(1),
+
+                                Section::make('Logos & Branding')
+                                    ->schema([
+                                        FileUpload::make('logo')
+                                            ->label('Main Logo')
+                                            ->image()
+                                            ->directory('settings')
+                                            ->maxSize(2048)
+                                            ->imageEditor()
+                                            ->helperText('Recommended size: 200x60px'),
+
+                                        FileUpload::make('footer_logo')
+                                            ->label('Footer Logo')
+                                            ->image()
+                                            ->directory('settings')
+                                            ->maxSize(2048)
+                                            ->imageEditor()
+                                            ->helperText('Recommended size: 200x60px'),
+
+                                        FileUpload::make('favicon')
+                                            ->label('Favicon')
+                                            ->image()
+                                            ->directory('settings')
+                                            ->maxSize(512)
+                                            ->helperText('Recommended size: 32x32px or 64x64px'),
+                                    ])
+                                    ->columns(3),
+                            ]),
+
+                        Tabs\Tab::make('Contact')
+                            ->icon('heroicon-o-phone')
+                            ->schema([
+                                Section::make('Contact Information')
+                                    ->schema([
+                                        TextInput::make('email')
+                                            ->label('Email Address')
+                                            ->email()
+                                            ->maxLength(255),
+
+                                        TextInput::make('phone')
+                                            ->label('Phone Number')
+                                            ->tel()
+                                            ->maxLength(255),
+
+                                        Textarea::make('address')
+                                            ->label('Street Address')
+                                            ->rows(2)
+                                            ->maxLength(500),
+
+                                        TextInput::make('city')
+                                            ->label('City')
+                                            ->maxLength(255),
+
+                                        TextInput::make('state')
+                                            ->label('State/Province')
+                                            ->maxLength(255),
+
+                                        TextInput::make('country')
+                                            ->label('Country')
+                                            ->maxLength(255),
+
+                                        TextInput::make('postal_code')
+                                            ->label('Postal Code')
+                                            ->maxLength(20),
+                                    ])
+                                    ->columns(2),
+                            ]),
+
+                        Tabs\Tab::make('Social Media')
+                            ->icon('heroicon-o-share')
+                            ->schema([
+                                Section::make('Social Media Links')
+                                    ->schema([
+                                        TextInput::make('facebook_url')
+                                            ->label('Facebook URL')
+                                            ->url()
+                                            ->placeholder('https://facebook.com/yourpage')
+                                            ->maxLength(255),
+
+                                        TextInput::make('twitter_url')
+                                            ->label('Twitter URL')
+                                            ->url()
+                                            ->placeholder('https://twitter.com/yourhandle')
+                                            ->maxLength(255),
+
+                                        TextInput::make('linkedin_url')
+                                            ->label('LinkedIn URL')
+                                            ->url()
+                                            ->placeholder('https://linkedin.com/company/yourcompany')
+                                            ->maxLength(255),
+
+                                        TextInput::make('instagram_url')
+                                            ->label('Instagram URL')
+                                            ->url()
+                                            ->placeholder('https://instagram.com/yourhandle')
+                                            ->maxLength(255),
+
+                                        TextInput::make('youtube_url')
+                                            ->label('YouTube URL')
+                                            ->url()
+                                            ->placeholder('https://youtube.com/yourchannel')
+                                            ->maxLength(255),
+                                    ])
+                                    ->columns(2),
+                            ]),
+
+                        Tabs\Tab::make('Theme')
+                            ->icon('heroicon-o-paint-brush')
+                            ->schema([
+                                Section::make('Color Theme')
+                                    ->schema([
+                                        ColorPicker::make('primary_color')
+                                            ->label('Primary Color')
+                                            ->default('#1db6c5')
+                                            ->helperText('Main brand color used throughout the site'),
+
+                                        ColorPicker::make('secondary_color')
+                                            ->label('Secondary Color')
+                                            ->default('#001848')
+                                            ->helperText('Secondary brand color for accents'),
+
+                                        ColorPicker::make('accent_color')
+                                            ->label('Accent Color')
+                                            ->helperText('Optional accent color for highlights'),
+                                    ])
+                                    ->columns(3),
+                            ]),
+
+                        Tabs\Tab::make('Footer')
+                            ->icon('heroicon-o-document-text')
+                            ->schema([
+                                Section::make('Footer Content')
+                                    ->schema([
+                                        Textarea::make('footer_text')
+                                            ->label('Footer Description')
+                                            ->rows(3)
+                                            ->maxLength(500)
+                                            ->helperText('Text displayed in the footer'),
+
+                                        TextInput::make('copyright_text')
+                                            ->label('Copyright Text')
+                                            ->maxLength(255)
+                                            ->placeholder('© 2026 CSA Education. All Rights Reserved.')
+                                            ->helperText('Leave empty to use default'),
+                                    ])
+                                    ->columns(1),
+                            ]),
+                    ])
+                    ->columnSpanFull(),
+            ]);
+    }
+}
