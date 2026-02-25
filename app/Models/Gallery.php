@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class Gallery extends Model
 {
@@ -19,6 +18,11 @@ class Gallery extends Model
         'is_active' => 'boolean',
     ];
 
+    /**
+     * Get the full URL for the gallery image
+     * Database stores: gallery/filename.jpg
+     * This returns: http://domain/uploads/gallery/filename.jpg
+     */
     public function getImageUrlAttribute()
     {
         if (!$this->image) {
@@ -30,20 +34,8 @@ class Gallery extends Model
             return $this->image;
         }
 
-        // Remove any leading slashes
-        $path = ltrim($this->image, '/');
-
-        // If it starts with 'gallery/', prepend 'uploads/'
-        if (str_starts_with($path, 'gallery/')) {
-            return url('uploads/' . $path);
-        }
-
-        // If it already has 'uploads/', use as is
-        if (str_starts_with($path, 'uploads/')) {
-            return url($path);
-        }
-
-        // Default: assume it's in uploads/gallery
-        return url('uploads/gallery/' . $path);
+        // Database stores: gallery/filename.jpg
+        // We need: uploads/gallery/filename.jpg
+        return url('uploads/' . ltrim($this->image, '/'));
     }
 }

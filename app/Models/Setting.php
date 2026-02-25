@@ -48,10 +48,12 @@ class Setting extends Model
 
     /**
      * Get the full URL for logo
+     * Database stores: settings/filename.jpg
+     * This returns: http://domain/uploads/settings/filename.jpg
      */
     public function getLogoUrlAttribute()
     {
-        return $this->getImageUrl($this->logo, 'settings');
+        return $this->getImageUrl($this->logo);
     }
 
     /**
@@ -59,7 +61,7 @@ class Setting extends Model
      */
     public function getFooterLogoUrlAttribute()
     {
-        return $this->getImageUrl($this->footer_logo, 'settings');
+        return $this->getImageUrl($this->footer_logo);
     }
 
     /**
@@ -67,13 +69,13 @@ class Setting extends Model
      */
     public function getFaviconUrlAttribute()
     {
-        return $this->getImageUrl($this->favicon, 'settings');
+        return $this->getImageUrl($this->favicon);
     }
 
     /**
      * Helper method to generate image URLs
      */
-    private function getImageUrl($image, $directory)
+    private function getImageUrl($image)
     {
         if (!$image) {
             return null;
@@ -84,19 +86,8 @@ class Setting extends Model
             return $image;
         }
 
-        $path = ltrim($image, '/');
-
-        // If it starts with directory name, prepend 'uploads/'
-        if (str_starts_with($path, $directory . '/')) {
-            return url('uploads/' . $path);
-        }
-
-        // If it already has 'uploads/', use as is
-        if (str_starts_with($path, 'uploads/')) {
-            return url($path);
-        }
-
-        // Default: assume it's in uploads/{directory}
-        return url('uploads/' . $directory . '/' . $path);
+        // Database stores: settings/filename.jpg
+        // We need: uploads/settings/filename.jpg
+        return url('uploads/' . ltrim($image, '/'));
     }
 }

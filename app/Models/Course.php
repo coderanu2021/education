@@ -29,6 +29,8 @@ class Course extends Model
 
     /**
      * Get the full URL for the course image
+     * Database stores: courses/filename.jpg
+     * This returns: http://domain/uploads/courses/filename.jpg
      */
     public function getImageUrlAttribute()
     {
@@ -41,19 +43,8 @@ class Course extends Model
             return $this->image;
         }
 
-        $path = ltrim($this->image, '/');
-
-        // If it starts with 'courses/', prepend 'uploads/'
-        if (str_starts_with($path, 'courses/')) {
-            return url('uploads/' . $path);
-        }
-
-        // If it already has 'uploads/', use as is
-        if (str_starts_with($path, 'uploads/')) {
-            return url($path);
-        }
-
-        // Default: assume it's in uploads/courses
-        return url('uploads/courses/' . $path);
+        // Database stores: courses/filename.jpg
+        // We need: uploads/courses/filename.jpg
+        return url('uploads/' . ltrim($this->image, '/'));
     }
 }

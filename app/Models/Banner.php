@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Storage;
 
 class Banner extends Model
 {
@@ -20,7 +19,8 @@ class Banner extends Model
 
     /**
      * Get the full URL for the banner image
-     * This accessor handles various path formats for compatibility
+     * Database stores: banners/filename.jpg
+     * This returns: http://domain/uploads/banners/filename.jpg
      */
     public function getImageUrlAttribute()
     {
@@ -33,36 +33,8 @@ class Banner extends Model
             return $this->image;
         }
 
-        // Remove any leading slashes
-        $path = ltrim($this->image, '/');
-
-        // If it starts with 'banners/', prepend 'uploads/'
-        if (str_starts_with($path, 'banners/')) {
-            return url('uploads/' . $path);
-        }
-
-        // If it already has 'uploads/', use as is
-        if (str_starts_with($path, 'uploads/')) {
-            return url($path);
-        }
-
-        // Default: assume it's in uploads/banners
-        return url('uploads/banners/' . $path);
-    }
-
-    /**
-     * Get the disk path for Filament ImageColumn
-     * This ensures the admin panel can display images correctly
-     */
-    public function getImagePathAttribute()
-    {
-        if (!$this->image) {
-            return null;
-        }
-
-        // Remove 'uploads/' prefix if present since we're using 'uploads' disk
-        $path = str_replace('uploads/', '', $this->image);
-        
-        return ltrim($path, '/');
+        // Database stores: banners/filename.jpg
+        // We need: uploads/banners/filename.jpg
+        return url('uploads/' . ltrim($this->image, '/'));
     }
 }
