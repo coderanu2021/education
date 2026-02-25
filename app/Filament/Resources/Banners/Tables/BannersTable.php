@@ -16,8 +16,10 @@ class BannersTable
             ->columns([
                 ImageColumn::make('image')
                     ->label('Banner')
-                    ->getStateUsing(fn ($record) => asset($record->image))
-                    ->size(150),
+                    ->disk('uploads')
+                    ->visibility('public')
+                    ->size(150)
+                    ->defaultImageUrl(url('/images/slides/slider-mainbg-001.jpg')),
 
                 TextColumn::make('link')
                     ->label('Link')

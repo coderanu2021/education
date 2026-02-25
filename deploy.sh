@@ -42,8 +42,8 @@ php artisan optimize
 
 # Set proper permissions
 echo "🔐 Setting permissions..."
-sudo chown -R www-data:www-data storage bootstrap/cache
-sudo chmod -R 775 storage bootstrap/cache
+sudo chown -R www-data:www-data storage bootstrap/cache public/uploads
+sudo chmod -R 775 storage bootstrap/cache public/uploads
 
 # Restart PHP-FPM
 echo "🔄 Restarting PHP-FPM..."

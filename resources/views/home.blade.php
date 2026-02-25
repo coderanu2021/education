@@ -13,10 +13,10 @@
         <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
             @if($banner->link)
             <a href="{{ $banner->link }}">
-                <img src="{{ asset($banner->image) }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="height: 600px; object-fit: cover;">
+                <img src="{{ $banner->image_url }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="height: 600px; object-fit: cover;">
             </a>
             @else
-            <img src="{{ asset($banner->image) }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="height: 600px; object-fit: cover;">
+            <img src="{{ $banner->image_url }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="height: 600px; object-fit: cover;">
             @endif
         </div>
         @empty

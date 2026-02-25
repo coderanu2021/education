@@ -17,6 +17,7 @@ class GalleryTable
                 ImageColumn::make('image')
                     ->label('Image')
                     ->disk('uploads')
+                    ->visibility('public')
                     ->size(100),
 
                 TextColumn::make('title')

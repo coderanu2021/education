@@ -30,17 +30,20 @@ class Gallery extends Model
             return $this->image;
         }
 
+        // Remove any leading slashes
+        $path = ltrim($this->image, '/');
+
         // If it starts with 'gallery/', prepend 'uploads/'
-        if (str_starts_with($this->image, 'gallery/')) {
-            return asset('uploads/' . $this->image);
+        if (str_starts_with($path, 'gallery/')) {
+            return url('uploads/' . $path);
         }
 
         // If it already has 'uploads/', use as is
-        if (str_starts_with($this->image, 'uploads/')) {
-            return asset($this->image);
+        if (str_starts_with($path, 'uploads/')) {
+            return url($path);
         }
 
         // Default: assume it's in uploads/gallery
-        return asset('uploads/gallery/' . $this->image);
+        return url('uploads/gallery/' . $path);
     }
 }
