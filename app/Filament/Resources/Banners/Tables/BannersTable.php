@@ -14,8 +14,9 @@ class BannersTable
     {
         return $table
             ->columns([
-                ImageColumn::make('image_url')
+                ImageColumn::make('image')
                     ->label('Banner')
+                    ->disk('uploads')
                     ->size(150),
 
                 TextColumn::make('link')

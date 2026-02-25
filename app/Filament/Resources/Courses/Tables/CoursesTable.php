@@ -19,7 +19,8 @@ class CoursesTable
                 TextColumn::make('price')
                     ->money()
                     ->sortable(),
-                ImageColumn::make('image_url')
+                ImageColumn::make('image')
+                    ->disk('uploads')
                     ->size(80),
                 TextColumn::make('duration')
                     ->searchable(),
