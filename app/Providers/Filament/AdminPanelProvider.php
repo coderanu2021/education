@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -29,16 +30,20 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName('CSA Education')
+            ->brandLogo(asset('images/csa-logo.svg'))
+            ->darkModeBrandLogo(asset('images/csa-footer-logo.svg'))
             ->favicon(asset('images/favicon.png'))
             ->colors([
-                'primary' => Color::Teal,
+                'primary' => Color::Orange,
                 'danger' => Color::Red,
-                'gray' => Color::Slate,
+                'gray' => Color::Zinc,
                 'info' => Color::Blue,
                 'success' => Color::Green,
                 'warning' => Color::Amber,
             ])
             ->font('Inter')
+            ->darkMode()
+            ->defaultThemeMode(ThemeMode::Dark)
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
@@ -65,10 +70,14 @@ class AdminPanelProvider extends PanelProvider
             ->databaseNotifications()
             ->databaseNotificationsPolling('30s')
             ->sidebarCollapsibleOnDesktop()
+            ->collapsedSidebarWidth('5rem')
             ->navigationGroups([
                 'Content Management',
                 'User Management',
                 'Settings',
-            ]);
+            ])
+            ->topNavigation(false)
+            ->maxContentWidth('full')
+            ->spa();
     }
 }
