@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Banner extends Model
 {
@@ -17,6 +18,10 @@ class Banner extends Model
         'is_active' => 'boolean',
     ];
 
+    /**
+     * Get the full URL for the banner image
+     * This accessor handles various path formats for compatibility
+     */
     public function getImageUrlAttribute()
     {
         if (!$this->image) {
@@ -44,4 +49,21 @@ class Banner extends Model
         // Default: assume it's in uploads/banners
         return url('uploads/banners/' . $path);
     }
+
+    /**
+     * Get the disk path for Filament ImageColumn
+     * This ensures the admin panel can display images correctly
+     */
+    public function getImagePathAttribute()
+    {
+        if (!$this->image) {
+            return null;
+        }
+
+        // Remove 'uploads/' prefix if present since we're using 'uploads' disk
+        $path = str_replace('uploads/', '', $this->image);
+        
+        return ltrim($path, '/');
+    }
+}
 }

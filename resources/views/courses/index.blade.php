@@ -33,7 +33,7 @@
                     <!-- featured-imagebox-course -->
                     <div class="featured-imagebox featured-imagebox-course">
                         <div class="featured-thumbnail"> 
-                            <img class="img-fluid w-100" src="{{ \Illuminate\Support\Str::startsWith($course->image, ['http://', 'https://']) ? $course->image : ($course->image ? asset('storage/' . $course->image) : 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800') }}" alt="{{ $course->title }}" style="height: 250px; object-fit: cover;"> 
+                            <img class="img-fluid w-100" src="{{ $course->image_url ?? 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800' }}" alt="{{ $course->title }}" style="height: 250px; object-fit: cover;"> 
                         </div>
                         <div class="featured-content p-4">
                             <div class="ttm-lp-price text-primary font-weight-bold mb-2">${{ number_format($course->price, 2) }}</div>

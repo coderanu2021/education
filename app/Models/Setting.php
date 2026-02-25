@@ -45,4 +45,58 @@ class Setting extends Model
             return self::first() ?? new self();
         });
     }
+
+    /**
+     * Get the full URL for logo
+     */
+    public function getLogoUrlAttribute()
+    {
+        return $this->getImageUrl($this->logo, 'settings');
+    }
+
+    /**
+     * Get the full URL for footer logo
+     */
+    public function getFooterLogoUrlAttribute()
+    {
+        return $this->getImageUrl($this->footer_logo, 'settings');
+    }
+
+    /**
+     * Get the full URL for favicon
+     */
+    public function getFaviconUrlAttribute()
+    {
+        return $this->getImageUrl($this->favicon, 'settings');
+    }
+
+    /**
+     * Helper method to generate image URLs
+     */
+    private function getImageUrl($image, $directory)
+    {
+        if (!$image) {
+            return null;
+        }
+
+        // If it's already a full URL, return as is
+        if (filter_var($image, FILTER_VALIDATE_URL)) {
+            return $image;
+        }
+
+        $path = ltrim($image, '/');
+
+        // If it starts with directory name, prepend 'uploads/'
+        if (str_starts_with($path, $directory . '/')) {
+            return url('uploads/' . $path);
+        }
+
+        // If it already has 'uploads/', use as is
+        if (str_starts_with($path, 'uploads/')) {
+            return url($path);
+        }
+
+        // Default: assume it's in uploads/{directory}
+        return url('uploads/' . $directory . '/' . $path);
+    }
 }

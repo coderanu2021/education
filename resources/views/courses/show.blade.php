@@ -33,7 +33,7 @@
                     <article class="course single-lp_course">
                         <div class="ttm-course-single-content">
                             <div class="ttm-single-course-box mb-4">
-                                <img class="img-fluid w-100 rounded shadow-sm mb-4" src="{{ \Illuminate\Support\Str::startsWith($course->image, ['http://', 'https://']) ? $course->image : ($course->image ? asset('storage/' . $course->image) : 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800') }}" alt="{{ $course->title }}" style="max-height: 500px; object-fit: cover;">
+                                <img class="img-fluid w-100 rounded shadow-sm mb-4" src="{{ $course->image_url ?? 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800' }}" alt="{{ $course->title }}" style="max-height: 500px; object-fit: cover;">
                                 
                                 <ul class="ttm-coursedetails-box d-flex flex-wrap justify-content-between p-4 ttm-bgcolor-grey rounded">
                                     <li class="ttm-meta-line py-2"> 

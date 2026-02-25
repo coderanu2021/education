@@ -32,7 +32,10 @@ class CourseForm
                     ->prefix('$'),
                 FileUpload::make('image')
                     ->image()
-                    ->directory('courses'),
+                    ->disk('uploads')
+                    ->directory('courses')
+                    ->visibility('public')
+                    ->maxSize(5120),
                 TextInput::make('duration')
                     ->placeholder('e.g. 4 Weeks or 20 Hours'),
                 \Filament\Forms\Components\Select::make('level')
