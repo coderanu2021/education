@@ -10,6 +10,12 @@
     <title>@yield('title', settings('site_name', 'CSA Education') . ' - Computer Education & IT Training Center')</title>
 
     <link rel="shortcut icon" href="{{ settings('favicon') ? asset('storage/' . settings('favicon')) : asset('images/favicon.png') }}" />
+    
+    <!-- Google Fonts - Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/animate.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/fontello.css') }}"/>
@@ -28,6 +34,17 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}"/>
     
     @yield('extra_css')
+    
+    <style>
+        /* Poppins Font Family */
+        body,
+        h1, h2, h3, h4, h5, h6,
+        p, a, span, div,
+        button, input, textarea, select,
+        .btn, .nav-link, .menu-item {
+            font-family: 'Poppins', sans-serif !important;
+        }
+    </style>
     
     @if(settings('primary_color') || settings('secondary_color'))
     <style>
@@ -143,6 +160,9 @@
                                             </li>
                                             <li class="mega-menu-item {{ request()->is('verify-certificate') ? 'active' : '' }}">
                                                 <a href="{{ route('certificates.verify') }}">Verify Certificate</a>
+                                            </li>
+                                            <li class="mega-menu-item">
+                                                <a href="{{ route('gallery') }}">Gallery</a>
                                             </li>
                                             <li class="mega-menu-item {{ request()->is('contact') ? 'active' : '' }}">
                                                 <a href="{{ route('contact.show') }}">Contact Us</a>
