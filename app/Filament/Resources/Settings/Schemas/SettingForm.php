@@ -138,13 +138,13 @@ class SettingForm
                 // Theme Colors
                 ColorPicker::make('primary_color')
                     ->label('Primary Color')
-                    ->default('#1db6c5')
+                    ->default('#F96D17')
                     ->helperText('Main brand color used throughout the site')
                     ->columnSpan(1),
 
                 ColorPicker::make('secondary_color')
                     ->label('Secondary Color')
-                    ->default('#001848')
+                    ->default('#0F1B31')
                     ->helperText('Secondary brand color for accents')
                     ->columnSpan(1),
 

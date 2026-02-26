@@ -49,9 +49,9 @@
     @if(settings('primary_color') || settings('secondary_color'))
     <style>
         :root {
-            --primary-color: {{ settings('primary_color', '#1db6c5') }};
-            --secondary-color: {{ settings('secondary_color', '#001848') }};
-            --accent-color: {{ settings('accent_color', '#1db6c5') }};
+            --primary-color: {{ settings('primary_color', '#F96D17') }};
+            --secondary-color: {{ settings('secondary_color', '#0F1B31') }};
+            --accent-color: {{ settings('accent_color', '#F96D17') }};
         }
         
         /* Apply dynamic colors */
@@ -171,7 +171,7 @@
                                     </nav>
                                     <div class="header_extra d-flex flex-row align-items-center justify-content-end ms-auto">
                                         <div class="header_btn">
-                                            <a class="ttm-btn ttm-btn-style-fill ttm-btn-size-md ttm-btn-color-skincolor" href="/courses">Get Course</a>
+                                            <a class="ttm-btn ttm-btn-style-fill ttm-btn-size-md ttm-btn-color-skincolor" href="/courses" style="padding-right:45px;">Get Course</a>
                                         </div>
                                     </div>
                                 </div>

@@ -18,8 +18,8 @@ class SettingSeeder extends Seeder
             'city' => 'Bhawanigarh',
             'state' => 'Punjab',
             'country' => 'India',
-            'primary_color' => '#1db6c5',
-            'secondary_color' => '#001848',
+            'primary_color' => '#F96D17',
+            'secondary_color' => '#0F1B31',
             'footer_text' => 'CSA Education Bhawanigarh - Best place for learning latest technology for IT industry. Huge experience in multimedia and web technologies.',
             'copyright_text' => 'Copyright © ' . date('Y') . ' CSA Education Bhawanigarh. All Rights Reserved.',
         ]);
