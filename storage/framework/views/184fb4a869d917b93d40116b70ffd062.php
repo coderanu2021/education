@@ -1,32 +1,30 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <!-- Banner Slider -->
-<!-- Debug: Total Banners = {{ $banners->count() }} -->
+<!-- Debug: Total Banners = <?php echo e($banners->count()); ?> -->
 <div id="bannerCarousel" class="carousel slide" data-ride="carousel" data-interval="3000" style="margin-top: 0;">
     <ol class="carousel-indicators">
-        @foreach($banners as $index => $banner)
-        <li data-target="#bannerCarousel" data-slide-to="{{ $index }}" class="{{ $index === 0 ? 'active' : '' }}"></li>
-        @endforeach
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $banners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $banner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
+        <li data-target="#bannerCarousel" data-slide-to="<?php echo e($index); ?>" class="<?php echo e($index === 0 ? 'active' : ''); ?>"></li>
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
     </ol>
     <div class="carousel-inner">
-        @forelse($banners as $index => $banner)
-        <!-- Debug Banner {{ $index + 1 }}: {{ $banner->image_url }} -->
-        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-            @if($banner->link)
-            <a href="{{ $banner->link }}">
-                <img src="{{ $banner->image_url }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="height: 600px; object-fit: cover;">
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__empty_1 = true; $__currentLoopData = $banners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $banner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
+        <!-- Debug Banner <?php echo e($index + 1); ?>: <?php echo e($banner->image_url); ?> -->
+        <div class="carousel-item <?php echo e($index === 0 ? 'active' : ''); ?>">
+            <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php endif; ?><?php if($banner->link): ?>
+            <a href="<?php echo e($banner->link); ?>">
+                <img src="<?php echo e($banner->image_url); ?>" class="d-block w-100" alt="Banner <?php echo e($index + 1); ?>" style="height: 600px; object-fit: cover;">
             </a>
-            @else
-            <img src="{{ $banner->image_url }}" class="d-block w-100" alt="Banner {{ $index + 1 }}" style="height: 600px; object-fit: cover;">
-            @endif
+            <?php else: ?>
+            <img src="<?php echo e($banner->image_url); ?>" class="d-block w-100" alt="Banner <?php echo e($index + 1); ?>" style="height: 600px; object-fit: cover;">
+            <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
         </div>
-        @empty
+        <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
         <!-- Debug: No banners found, showing default -->
         <div class="carousel-item active">
-            <img src="{{ asset('images/slides/slider-mainbg-001.jpg') }}" class="d-block w-100" alt="Default Banner" style="height: 600px; object-fit: cover;">
+            <img src="<?php echo e(asset('images/slides/slider-mainbg-001.jpg')); ?>" class="d-block w-100" alt="Default Banner" style="height: 600px; object-fit: cover;">
         </div>
-        @endforelse
+        <?php endif; ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php endif; ?>
     </div>
     <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -111,25 +109,25 @@
                 </div>
             </div>
             <div class="row">
-                @foreach($courses as $course)
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if BLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::openLoop(); ?><?php endif; ?><?php $__currentLoopData = $courses; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $course): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::startLoop($loop->index); ?><?php endif; ?>
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="featured-imagebox featured-imagebox-course card shadow-sm" style="background-color: #ffffff; border: 1px solid #e0e0e0;">
                         <div class="featured-thumbnail">
-                            <img class="img-fluid w-100" src="{{ $course->image_url ?? 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800' }}" alt="{{ $course->title }}" style="height: 250px; object-fit: cover;">
+                            <img class="img-fluid w-100" src="<?php echo e($course->image_url ?? 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&q=80&w=800'); ?>" alt="<?php echo e($course->title); ?>" style="height: 250px; object-fit: cover;">
                         </div>
                         <div class="featured-content p-4" style="background-color: #ffffff;">
-                            <div class="ttm-lp-price font-weight-bold mb-2" style="background-color: #F96D17; color: #ffffff; padding: 8px 16px; border-radius: 5px; display: inline-block;">${{ number_format($course->price, 2) }}</div>
+                            <div class="ttm-lp-price font-weight-bold mb-2" style="background-color: #F96D17; color: #ffffff; padding: 8px 16px; border-radius: 5px; display: inline-block;">$<?php echo e(number_format($course->price, 2)); ?></div>
                             <div class="featured-title mb-3">
-                                <h3 class="h5"><a href="/courses/{{ $course->slug }}" style="color: #0F1B31;">{{ $course->title }}</a></h3>
+                                <h3 class="h5"><a href="/courses/<?php echo e($course->slug); ?>" style="color: #0F1B31;"><?php echo e($course->title); ?></a></h3>
                             </div>
                             <div class="ttm-course-box-meta text-muted small">
-                                <span class="mr-3"><i class="fa fa-clock-o mr-1"></i> {{ $course->duration }}</span>
-                                <span><i class="fa fa-signal mr-1"></i> {{ $course->level }}</span>
+                                <span class="mr-3"><i class="fa fa-clock-o mr-1"></i> <?php echo e($course->duration); ?></span>
+                                <span><i class="fa fa-signal mr-1"></i> <?php echo e($course->level); ?></span>
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
+                <?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::endLoop(); ?><?php endif; ?><?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?><?php if(\Livewire\Mechanisms\ExtendBlade\ExtendBlade::isRenderingLivewireComponent()): ?><!--[if ENDBLOCK]><![endif]--><?php \Livewire\Features\SupportCompiledWireKeys\SupportCompiledWireKeys::closeLoop(); ?><?php endif; ?>
             </div>
             <div class="row mt-5">
                 <div class="col-lg-12 text-center">
@@ -207,10 +205,12 @@
                     </div>
                 </div>
                 <div class="col-lg-4 text-lg-right mt-4 mt-lg-0">
-                    <a href="{{ route('students.register') }}" class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-white" style="background:#0F1B31;">Register Now</a>
+                    <a href="<?php echo e(route('students.register')); ?>" class="ttm-btn ttm-btn-size-md ttm-btn-shape-square ttm-btn-style-fill ttm-btn-color-white" style="background:#0F1B31;">Register Now</a>
                 </div>
             </div>
         </div>
     </section>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', array_diff_key(get_defined_vars(), ['__data' => 1, '__path' => 1]))->render(); ?><?php /**PATH E:\wamp64\www\education\resources\views/home.blade.php ENDPATH**/ ?>
