@@ -41,8 +41,7 @@
                                 <h2 class="title">CSA Education Bhawanigarh</h2>
                             </div>
                             <div class="title-desc">
-                                <p>Student want to learn latest technology based for IT industry the best place for learning at 'CSA'. We have a huge experience in multimedia and web technologies due to our professionals.</p>
-                                <p>We provide quality computer education and IT training to help students build successful careers in technology. Our experienced team ensures practical, hands-on learning.</p>
+                                <p>CSA  [COMPUTER SOFTWARE ACADEMY] institute of computer education was established in 2005 with a vision to provide training to budding IT professional & helping them choose the right career. Our motive is to make all class of people Computer literate and take all possible advantages to make their future much brighter.  Our training opens doors to exciting careers in computer streams like as data entry operators, accountants, computer hardware's, computer typist ,computer operator and computer networking. CSA main motive is provide 100% practical training in computer applications. A student will get 6 hrs a week classes out of which 70% will be practical and 30% theory. A student can get as much extra time on computers, as convenient and require .Thousands of students have already trained professionally and made their successful career in the past years.And settled in Government and private jobs.</p>
                             </div>
                         </div>
                         <div class="row mt-4">
