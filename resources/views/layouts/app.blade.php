@@ -124,7 +124,7 @@
                                 <div class="site-navigation d-flex flex-row">
                                     <div class="site-branding">
                                         <a class="home-link" href="/" title="{{ settings('site_name', 'CSA Education') }}" rel="home">
-                                            <img id="logo-img" class="img-fluid auto_size" alt="{{ settings('site_name', 'CSA Education') }}" width="200" height="60" src="{{ settings('logo') ? asset('storage/' . settings('logo')) : asset('images/csa-logo.svg') }}">
+                                            <img id="logo-img" class="img-fluid auto_size" alt="{{ settings('site_name', 'CSA Education') }}" width="200" height="60" src="{{ asset('uploads/logo.png')}}">
                                         </a>
                                     </div>
                                     <div class="btn-show-menu-mobile menubar menubar--squeeze">
