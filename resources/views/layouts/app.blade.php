@@ -119,7 +119,7 @@
                 <div class="site-header-menu-inner ttm-stickable-header">
                     <div class="container">
                         <div class="ttm-bg ttm-col-bgcolor-yes ttm-right-span ttm-bgcolor-white res-ttm-left-span z-index-2">
-                            <div class="ttm-col-wrapper-bg-layer ttm-bg-layer"></div>
+                            <div class="ttm-col-wrapper-bg-layer"></div>
                             <div class="layer-content">
                                 <div class="site-navigation d-flex flex-row">
                                     <div class="site-branding">
