@@ -281,7 +281,7 @@
                                     <li><h3 style="color:#fff !important;">location:</h3> {{ settings('address') }}{{ settings('city') ? ', ' . settings('city') : '' }}{{ settings('state') ? ', ' . settings('state') : '' }}</li>
                                     @endif
                                     @if(settings('email'))
-                                    <li><h3>Email Us:</h3> <a href="mailto:{{ settings('email') }}">{{ settings('email') }}</a></li>
+                                    <li><h3 style="color:#fff !important;">Email Us:</h3> <a href="mailto:{{ settings('email') }}">{{ settings('email') }}</a></li>
                                     @endif
                                     @if(settings('phone'))
                                     <li><h3>Call Us:</h3> {{ settings('phone') }}</li>
