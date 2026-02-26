@@ -44,8 +44,8 @@
                             <div class="row justify-content-center">
                                 <div class="col-md-8">
                                     <div class="form-group mb-0 position-relative">
-                                        <input type="text" name="code" class="form-control form-control-lg pl-4 pr-5 rounded-pill border-2" placeholder="Enter Certificate Code (e.g. CERT-XXXXXX)" value="{{ request('code') }}" required style="height: 60px; border-color: #1db6c5;">
-                                        <button type="submit" class="btn position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #1db6c5;">
+                                        <input type="text" name="code" class="form-control form-control-lg pl-4 pr-5 rounded-pill border-2" placeholder="Enter Certificate Code (e.g. CERT-XXXXXX)" value="{{ request('code') }}" required style="height: 60px; border-color: #F96D17;">
+                                        <button type="submit" class="btn position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #F96D17;">
                                             <i class="fa fa-search fs-4"></i>
                                         </button>
                                     </div>

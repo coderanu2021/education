@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Page Title -->
-<div class="ttm-page-title-row" style="background: linear-gradient(135deg, #1db6c5 0%, #001848 100%); padding: 80px 0;">
+<div class="ttm-page-title-row" style="background: linear-gradient(135deg, #F96D17 0%, #0F1B31 100%); padding: 80px 0;">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -50,8 +50,8 @@
             @else
             <div class="row">
                 <div class="col-12 text-center" style="padding: 60px 0;">
-                    <i class="fa fa-image" style="font-size: 80px; color: #1db6c5; margin-bottom: 20px;"></i>
-                    <h3 style="color: #001848; margin-bottom: 10px;">No Gallery Images Yet</h3>
+                    <i class="fa fa-image" style="font-size: 80px; color: #F96D17; margin-bottom: 20px;"></i>
+                    <h3 style="color: #0F1B31; margin-bottom: 10px;">No Gallery Images Yet</h3>
                     <p style="color: #666;">Check back soon for our latest photos and updates!</p>
                 </div>
             </div>
