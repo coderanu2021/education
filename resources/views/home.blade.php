@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5 col-md-12" style="diplay:none">
-                    <div class="ttm-bg ttm-col-bgcolor-yes ttm-bgcolor-white box-shadow spacing-5">
+                    <div class="ttm-bg ttm-col-bgcolor-yes ttm-bgcolor-white box-shadow spacing-5" style="diplay:none">
                         <div class="layer-content">
                             <div class="ttm-bgcolor-skincolor ttm-box-wrapper">
                                 <h3>Verify Your Certificate Online</h3>
