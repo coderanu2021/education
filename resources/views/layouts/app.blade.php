@@ -107,6 +107,32 @@
             background-color: var(--primary-color) !important;
             color: var(--primary-color) !important;
         }
+        
+        /* Course Cards Styling */
+        .featured-imagebox-course {
+            background-color: #ffffff !important;
+            border: 1px solid #e0e0e0 !important;
+        }
+        
+        .featured-imagebox-course .featured-content {
+            background-color: #ffffff !important;
+        }
+        
+        .featured-imagebox-course .ttm-lp-price {
+            background-color: var(--primary-color) !important;
+            color: #ffffff !important;
+            padding: 8px 16px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        .featured-imagebox-course h3 a {
+            color: var(--secondary-color) !important;
+        }
+        
+        .featured-imagebox-course h3 a:hover {
+            color: var(--primary-color) !important;
+        }
     </style>
     @endif
     <script>
