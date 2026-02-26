@@ -262,7 +262,7 @@
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 widget-area">
                             <div class="widget widget_nav_menu clearfix">
-                               <h3 class="widget-title" style="color:#fff;">Quick Links</h3>
+                               <h3 class="widget-title" style="color:#fff !important;">Quick Links</h3>
                                 <ul id="menu-footer-quick-links">
                                     <li><a href="/">Home</a></li>
                                     <li><a href="{{ route('about') }}">About Us</a></li>
@@ -275,10 +275,10 @@
                         </div>
                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 widget-area">
                             <div class="widget widget_nav_menu clearfix">
-                               <h3 class="widget-title" style="color:#fff;">Contact Us</h3>
+                               <h3 class="widget-title" style="color:#fff !important;">Contact Us</h3>
                                 <ul class="widget_contact_wrapper">
                                     @if(settings('address') || settings('city'))
-                                    <li><h3 style="color:#fff;">location:</h3> {{ settings('address') }}{{ settings('city') ? ', ' . settings('city') : '' }}{{ settings('state') ? ', ' . settings('state') : '' }}</li>
+                                    <li><h3 style="color:#fff !important;">location:</h3> {{ settings('address') }}{{ settings('city') ? ', ' . settings('city') : '' }}{{ settings('state') ? ', ' . settings('state') : '' }}</li>
                                     @endif
                                     @if(settings('email'))
                                     <li><h3>Email Us:</h3> <a href="mailto:{{ settings('email') }}">{{ settings('email') }}</a></li>
